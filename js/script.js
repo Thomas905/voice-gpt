@@ -1,4 +1,4 @@
-let click_to_record = document.getElementById("click_to_record");
+const click_to_record = document.getElementById("click_to_record");
 click_to_record.addEventListener('click',function(){
     const speech = true;
     window.SpeechRecognition = window.webkitSpeechRecognition;
@@ -14,6 +14,10 @@ click_to_record.addEventListener('click',function(){
             .join('')
 
         document.getElementById("convert_text").value = transcript;
+        if (document.getElementById("convert_text").value === "Alexa") {
+            let audio = new Audio('../sound/on.mp3');
+            audio.play().then(r => console.log(r)).catch(e => console.log(e));
+        }
 
         console.log(transcript);
     });
